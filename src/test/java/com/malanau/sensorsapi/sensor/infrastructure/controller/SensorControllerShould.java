@@ -3,6 +3,10 @@ package com.malanau.sensorsapi.sensor.infrastructure.controller;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.malanau.sensorsapi.ApplicationTestCase;
+import com.malanau.sensorsapi.sensor.domain.SensorIdMother;
+import com.malanau.sensorsapi.sensor.domain.SensorNameMother;
+import com.malanau.sensorsapi.sensor.domain.humidity.HumiditySensorValueMother;
+import com.malanau.sensorsapi.shared.domain.TimeStampMother;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,22 +16,25 @@ import org.junit.jupiter.api.Test;
 class SensorControllerShould extends ApplicationTestCase {
 
     @Test
-    void create() throws Exception {
+    void create_a_valid_humidity_sensor() throws Exception {
         final String method = "POST";
-        /*
-        final String courseId = CourseIdMother.random().value();
-        final String courseName = CourseNameMother.random().toString();
-        final String courseDuration = CourseDurationMother.random().toString();
-        */
         final String endpoint = "/sensor";
         final String body =
                 "{\n"
                         + "    \"sensor\": {\n"
-                        + "        \"id\": \"04778c84-f5a2-11ed-b67e-0242ac120002\",\n"
-                        + "        \"name\": \"sensor de humedad\",\n"
-                        + "        \"timeStamp\": 123456,\n"
+                        + "        \"id\": \""
+                        + SensorIdMother.random().value()
+                        + "\",\n"
+                        + "        \"name\": \""
+                        + SensorNameMother.random().toString()
+                        + "\",\n"
+                        + "        \"timeStamp\":"
+                        + TimeStampMother.random().value()
+                        + ",\n"
                         + "        \"sensorType\": \"Humidity\",\n"
-                        + "        \"value\": 12.00\n"
+                        + "        \"value\":"
+                        + HumiditySensorValueMother.random().value()
+                        + "\n"
                         + "    }\n"
                         + "}";
         final Integer expectedStatusCode = 201;
