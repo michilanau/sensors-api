@@ -15,7 +15,6 @@ import java.util.Optional;
 
 /***
  * Integration Test
- * Tests to valid persistence
  * */
 class InMemorySensorRepositoryShould extends SensorModuleInfrastructureTestCase {
 

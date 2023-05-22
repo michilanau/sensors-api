@@ -6,6 +6,9 @@ import com.malanau.sensorsapi.ApplicationTestCase;
 
 import org.junit.jupiter.api.Test;
 
+/***
+ * Acceptance Test
+ * */
 class SensorControllerShould extends ApplicationTestCase {
 
     @Test
