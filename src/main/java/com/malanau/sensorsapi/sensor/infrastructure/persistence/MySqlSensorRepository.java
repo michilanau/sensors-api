@@ -7,6 +7,7 @@ import com.malanau.sensorsapi.shared.infrastructure.persistence.HibernateReposit
 
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ public class MySqlSensorRepository extends HibernateRepository<Sensor> implement
     }
 
     @Override
+    @Transactional
     public void save(final Sensor sensor) {
         persist(sensor);
     }

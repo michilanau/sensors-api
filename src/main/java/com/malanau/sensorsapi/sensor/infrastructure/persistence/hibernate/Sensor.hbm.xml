@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.malanau.sensorsapi.sensor.domain.Sensor" table="sensor">
+        <composite-id name="id" class="com.malanau.sensorsapi.sensor.domain.SensorId" access="field">
+            <key-property column="id" name="value" length="36" access="field"/>
+        </composite-id>
+
+        <component name="name" class="com.malanau.sensorsapi.sensor.domain.SensorName" access="field">
+            <property name="value" column="name" type="string" access="field"/>
+        </component>
+
+        <component name="timeStamp" class="com.malanau.sensorsapi.shared.domain.TimeStamp" access="field">
+            <property name="value" column="time_stamp" type="long" access="field"/>
+        </component>
+
+        <joined-subclass name="com.malanau.sensorsapi.sensor.domain.humidity.HumiditySensor" table="sensor_humidity">
+            <key column="id"/>
+
+            <component name="value" class="com.malanau.sensorsapi.sensor.domain.humidity.HumiditySensorValue" access="field">
+                <property name="value" column="value" type="double" access="field"/>
+            </component>
+
+        </joined-subclass>
+    </class>
+</hibernate-mapping>

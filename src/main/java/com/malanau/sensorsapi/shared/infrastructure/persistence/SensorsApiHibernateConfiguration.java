@@ -24,6 +24,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 public class SensorsApiHibernateConfiguration {
+
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         final LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
