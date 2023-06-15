@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Repository
+@Transactional
 public class MySqlSensorRepository extends HibernateRepository<Sensor> implements SensorRepository {
 
     public MySqlSensorRepository(final SessionFactory sessionFactory) {
@@ -19,7 +20,6 @@ public class MySqlSensorRepository extends HibernateRepository<Sensor> implement
     }
 
     @Override
-    @Transactional
     public void save(final Sensor sensor) {
         persist(sensor);
     }

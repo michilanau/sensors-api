@@ -1,9 +1,12 @@
 package com.malanau.sensorsapi.shared.domain;
 
+import lombok.Getter;
+
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
+@Getter
 public abstract class UUIDIdentifier implements Serializable {
     protected final String value;
 
@@ -11,10 +14,6 @@ public abstract class UUIDIdentifier implements Serializable {
         ensureValidUuid(value);
 
         this.value = value;
-    }
-
-    public String value() {
-        return value;
     }
 
     private void ensureValidUuid(final String value) throws IllegalArgumentException {

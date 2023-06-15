@@ -12,11 +12,11 @@ public class InMemorySensorRepository implements SensorRepository {
 
     @Override
     public void save(final Sensor sensor) {
-        sensors.put(sensor.getId().value(), sensor);
+        sensors.put(sensor.getId().getValue(), sensor);
     }
 
     @Override
     public Optional<Sensor> search(final SensorId id) {
-        return Optional.ofNullable(sensors.get(id.value()));
+        return Optional.ofNullable(sensors.get(id.getValue()));
     }
 }

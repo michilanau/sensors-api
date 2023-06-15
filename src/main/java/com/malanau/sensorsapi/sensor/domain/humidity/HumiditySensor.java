@@ -21,4 +21,9 @@ public final class HumiditySensor extends Sensor {
         super(id, name, timeStamp, SensorType.Humidity);
         this.value = value;
     }
+
+    public HumiditySensor() {
+        super(null, null, null, SensorType.Humidity);
+        value = null;
+    }
 }

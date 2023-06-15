@@ -1,16 +1,15 @@
 package com.malanau.sensorsapi.shared.domain;
 
+import lombok.Getter;
+
 import java.util.Objects;
 
+@Getter
 public abstract class LongValueObject {
     private final Long value;
-    
-    public LongValueObject(final Long value){
+
+    public LongValueObject(final Long value) {
         this.value = value;
-    }
-    
-    public Long value(){
-        return value;
     }
 
     @Override

@@ -1,17 +1,15 @@
 package com.malanau.sensorsapi.shared.domain;
 
+import lombok.Getter;
+
 import java.util.Objects;
 
+@Getter
 public abstract class StringValueObject {
     private final String value;
 
     public StringValueObject(final String value) {
         this.value = value;
-    }
-
-    @Override
-    public String toString() {
-        return value;
     }
 
     @Override

@@ -24,19 +24,19 @@ class SensorControllerShould extends ApplicationTestCase {
                 "{\n"
                         + "    \"sensor\": {\n"
                         + "        \"id\": \""
-                        + SensorIdMother.random().value()
+                        + SensorIdMother.random().getValue()
                         + "\",\n"
                         + "        \"name\": \""
                         + SensorNameMother.random().toString()
                         + "\",\n"
                         + "        \"timeStamp\":"
-                        + TimeStampMother.random().value()
+                        + TimeStampMother.random().getValue()
                         + ",\n"
                         + "        \"sensorType\": \""
                         + SensorType.Humidity
                         + "\",\n"
                         + "        \"value\":"
-                        + HumiditySensorValueMother.random().value()
+                        + HumiditySensorValueMother.random().getValue()
                         + "\n"
                         + "    }\n"
                         + "}";

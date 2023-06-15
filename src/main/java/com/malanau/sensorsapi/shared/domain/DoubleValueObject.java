@@ -1,16 +1,15 @@
 package com.malanau.sensorsapi.shared.domain;
 
+import lombok.Getter;
+
 import java.util.Objects;
 
+@Getter
 public abstract class DoubleValueObject {
     private final Double value;
 
     public DoubleValueObject(final Double value) {
         this.value = value;
-    }
-
-    public Double value() {
-        return value;
     }
 
     @Override
