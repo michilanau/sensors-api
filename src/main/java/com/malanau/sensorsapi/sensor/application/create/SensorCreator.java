@@ -1,5 +1,6 @@
 package com.malanau.sensorsapi.sensor.application.create;
 
+import com.malanau.sensorsapi.sensor.domain.Sensor;
 import com.malanau.sensorsapi.sensor.domain.SensorRepository;
 
 import lombok.AllArgsConstructor;
@@ -13,6 +14,8 @@ public class SensorCreator {
 
     public void create(final CreateSensorRequest createSensorRequest) {
 
-        repository.save(createSensorRequest.getSensor());
+        for (final Sensor sensor : createSensorRequest.getSensors()) {
+            repository.save(sensor);
+        }
     }
 }
