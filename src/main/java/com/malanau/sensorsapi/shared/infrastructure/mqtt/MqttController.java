@@ -5,13 +5,17 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
+import org.springframework.core.env.Environment;
 
 public abstract class MqttController implements MqttCallback {
     protected final IMqttClient client;
     protected final MqttConnectOptions options;
     protected String defaultTopic;
+    protected Environment environment;
 
-    public MqttController() throws MqttException {
+    public MqttController(final Environment environment) throws MqttException {
+        this.environment = environment;
+
         client = createClient();
         client.setCallback(this);
 

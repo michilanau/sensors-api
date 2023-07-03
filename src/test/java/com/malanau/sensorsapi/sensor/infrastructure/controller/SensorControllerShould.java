@@ -22,7 +22,7 @@ class SensorControllerShould extends ApplicationTestCase {
         final String endpoint = "/sensor";
         final String body =
                 "{\n"
-                        + "    \"sensor\": {\n"
+                        + "    \"sensors\": [{\n"
                         + "        \"id\": \""
                         + SensorIdMother.random().getValue()
                         + "\",\n"
@@ -38,7 +38,7 @@ class SensorControllerShould extends ApplicationTestCase {
                         + "        \"value\":"
                         + HumiditySensorValueMother.random().getValue()
                         + "\n"
-                        + "    }\n"
+                        + "    }]\n"
                         + "}";
         final Integer expectedStatusCode = 201;
 

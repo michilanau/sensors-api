@@ -4,6 +4,7 @@ import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.hibernate.cfg.AvailableSettings;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -24,6 +25,12 @@ import javax.sql.DataSource;
 @Configuration
 @EnableTransactionManagement
 public class SensorsApiHibernateConfiguration {
+
+    private final Environment environment;
+
+    public SensorsApiHibernateConfiguration(final Environment environment) {
+        this.environment = environment;
+    }
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
@@ -50,9 +57,13 @@ public class SensorsApiHibernateConfiguration {
         final BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUrl(
-                "jdbc:mysql://localhost:3306/sensors?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
-        dataSource.setUsername("root");
-        dataSource.setPassword("root");
+                String.format(
+                        "jdbc:mysql://%s:%s/%s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+                        environment.getProperty("sensor.database.host"),
+                        environment.getProperty("sensor.database.port"),
+                        environment.getProperty("sensor.database.name")));
+        dataSource.setUsername(environment.getProperty("sensor.database.user"));
+        dataSource.setPassword(environment.getProperty("sensor.database.password"));
 
         return dataSource;
     }

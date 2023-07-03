@@ -10,6 +10,7 @@ import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -18,15 +19,18 @@ import java.io.IOException;
 public final class SensorMqttController extends MqttController implements MqttCallback {
     SensorCreator sensorCreator;
 
-    public SensorMqttController(final SensorCreator sensorCreator) throws MqttException {
-        super();
+    public SensorMqttController(final SensorCreator sensorCreator, final Environment environment)
+            throws MqttException {
+        super(environment);
         this.sensorCreator = sensorCreator;
     }
 
     @Override
     protected IMqttClient createClient() throws MqttException {
-        defaultTopic = "/sensor";
-        return new MqttClient("tcp://raspberrypi.local:1883", "123");
+        defaultTopic = environment.getProperty("mqtt.sensor.topic");
+        return new MqttClient(
+                environment.getProperty("mqtt.broker.uri"),
+                environment.getProperty("mqtt.sensor.clientId"));
     }
 
     @Override

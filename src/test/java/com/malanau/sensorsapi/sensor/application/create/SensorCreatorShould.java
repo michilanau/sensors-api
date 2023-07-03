@@ -19,15 +19,17 @@ import java.util.List;
  * */
 class SensorCreatorShould {
     @Test
-    void save_a_valid_sensor() {
+    void save_valid_sensors() {
         final SensorRepository repository = mock(SensorRepository.class);
         final SensorCreator creator = new SensorCreator(repository);
 
-        for (final Sensor sensor : sensors()) {
-            final CreateSensorRequest request = new CreateSensorRequest(sensor);
+        final List<Sensor> sensors = (List<Sensor>) sensors();
 
-            creator.create(request);
+        final CreateSensorRequest request = new CreateSensorRequest(sensors);
 
+        creator.create(request);
+
+        for (final Sensor sensor : sensors) {
             verify(repository, atLeastOnce()).save(sensor);
         }
     }
