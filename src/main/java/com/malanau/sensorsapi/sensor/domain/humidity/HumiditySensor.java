@@ -26,4 +26,15 @@ public final class HumiditySensor extends Sensor {
         super(null, null, null, SensorType.Humidity);
         value = null;
     }
+
+    @Override
+    public void recordEvent() {
+
+        record(
+                new HumiditySensorCreatedDomainEvent(
+                        getId().getValue(),
+                        getName().getValue(),
+                        getTimeStamp().getValue(),
+                        getValue().getValue()));
+    }
 }

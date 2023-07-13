@@ -3,6 +3,7 @@ package com.malanau.sensorsapi.sensor.domain;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.malanau.sensorsapi.sensor.domain.humidity.HumiditySensor;
+import com.malanau.sensorsapi.shared.domain.AggregateRoot;
 import com.malanau.sensorsapi.shared.domain.TimeStamp;
 
 import lombok.AllArgsConstructor;
@@ -18,18 +19,20 @@ import java.util.Objects;
 @JsonSubTypes({@JsonSubTypes.Type(value = HumiditySensor.class, name = "Humidity")})
 @Getter
 @AllArgsConstructor
-public abstract class Sensor {
+public abstract class Sensor extends AggregateRoot {
     private final SensorId id;
     private final SensorName name;
     private final TimeStamp timeStamp;
     private final SensorType sensorType;
+
+    public abstract void recordEvent();
 
     @Override
     public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof Sensor sensor)) {
+        if (!(o instanceof final Sensor sensor)) {
             return false;
         }
         return Objects.equals(id, sensor.id)
