@@ -18,7 +18,7 @@ public class SensorCreator {
 
         for (final Sensor sensor : createSensorRequest.getSensors()) {
 
-            sensor.recordEvent();
+            sensor.recordCreateDomainEvent();
             repository.save(sensor);
             eventBus.publish(sensor.pullDomainEvents());
         }

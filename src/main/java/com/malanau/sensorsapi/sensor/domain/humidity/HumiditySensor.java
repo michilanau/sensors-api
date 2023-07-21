@@ -28,7 +28,7 @@ public final class HumiditySensor extends Sensor {
     }
 
     @Override
-    public void recordEvent() {
+    public void recordCreateDomainEvent() {
 
         record(
                 new HumiditySensorCreatedDomainEvent(

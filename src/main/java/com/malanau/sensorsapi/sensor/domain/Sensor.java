@@ -25,7 +25,7 @@ public abstract class Sensor extends AggregateRoot {
     private final TimeStamp timeStamp;
     private final SensorType sensorType;
 
-    public abstract void recordEvent();
+    public abstract void recordCreateDomainEvent();
 
     @Override
     public boolean equals(final Object o) {
