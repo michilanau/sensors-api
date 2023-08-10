@@ -1,0 +1,17 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.malanau.sensorsapi.sensor_counter.domain.SensorCounter" table="sensor_counter">
+
+        <composite-id name="id" class="com.malanau.sensorsapi.sensor_counter.domain.SensorCounterId" access="field">
+            <key-property column="id" name="value" length="36" access="field" />
+        </composite-id>
+
+        <component name="total" class="com.malanau.sensorsapi.sensor_counter.domain.SensorCounterTotal" access="field">
+            <property name="value" column="total" type="integer" access="field" />
+        </component>
+    </class>
+</hibernate-mapping>

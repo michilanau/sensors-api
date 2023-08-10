@@ -1,4 +1,4 @@
-package com.malanau.sensorsapi.shared.infrastructure.bus.event;
+package com.malanau.sensorsapi.shared.infrastructure.bus.event.spring;
 
 import com.malanau.sensorsapi.shared.domain.bus.event.DomainEvent;
 import com.malanau.sensorsapi.shared.domain.bus.event.EventBus;

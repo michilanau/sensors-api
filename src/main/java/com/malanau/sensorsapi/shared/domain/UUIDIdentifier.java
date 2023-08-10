@@ -8,12 +8,16 @@ import java.util.UUID;
 
 @Getter
 public abstract class UUIDIdentifier implements Serializable {
-    protected final String value;
+    private final String value;
 
     public UUIDIdentifier(final String value) {
         ensureValidUuid(value);
 
         this.value = value;
+    }
+
+    public UUIDIdentifier() {
+        value = null;
     }
 
     private void ensureValidUuid(final String value) throws IllegalArgumentException {
@@ -25,10 +29,10 @@ public abstract class UUIDIdentifier implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof UUIDIdentifier that)) {
+        if (!(o instanceof final UUIDIdentifier that)) {
             return false;
         }
-        return value.equals(that.value);
+        return Objects.equals(value, that.value);
     }
 
     @Override

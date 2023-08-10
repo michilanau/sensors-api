@@ -1,4 +1,4 @@
-package com.malanau.sensorsapi.sensor.application.search;
+package com.malanau.sensorsapi.sensor.application.find;
 
 import com.malanau.sensorsapi.sensor.application.SensorResponse;
 import com.malanau.sensorsapi.sensor.domain.SensorId;

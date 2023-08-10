@@ -8,6 +8,7 @@ import static org.mockito.Mockito.verify;
 import com.malanau.sensorsapi.sensor.domain.Sensor;
 import com.malanau.sensorsapi.sensor.domain.SensorRepository;
 import com.malanau.sensorsapi.sensor.domain.humidity.HumiditySensorMother;
+import com.malanau.sensorsapi.shared.domain.bus.event.EventBus;
 
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +22,8 @@ class SensorCreatorShould {
     @Test
     void save_valid_sensors() {
         final SensorRepository repository = mock(SensorRepository.class);
-        final SensorCreator creator = new SensorCreator(repository);
+        final EventBus eventBus = mock(EventBus.class);
+        final SensorCreator creator = new SensorCreator(repository, eventBus);
 
         final List<Sensor> sensors = (List<Sensor>) sensors();
 

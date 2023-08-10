@@ -8,7 +8,5 @@ public final class SensorId extends UUIDIdentifier {
         super(value);
     }
 
-    public SensorId() {
-        super(null);
-    }
+    public SensorId() {}
 }

@@ -3,7 +3,7 @@ package com.malanau.sensorsapi.sensor.infrastructure.controller;
 import com.malanau.sensorsapi.sensor.application.SensorResponse;
 import com.malanau.sensorsapi.sensor.application.create.CreateSensorRequest;
 import com.malanau.sensorsapi.sensor.application.create.SensorCreator;
-import com.malanau.sensorsapi.sensor.application.search.SensorFinder;
+import com.malanau.sensorsapi.sensor.application.find.SensorFinder;
 
 import lombok.AllArgsConstructor;
 
