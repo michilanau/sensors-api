@@ -49,7 +49,7 @@ public class HumiditySensorCreatedDomainEvent extends SensorCreatedDomainEvent {
                 eventId,
                 occurredOn,
                 (String) body.get("name"),
-                (Long) body.get("timestamp"),
+                Long.valueOf((Integer) body.get("timestamp")),
                 (Double) body.get("value"));
     }
 

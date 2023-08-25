@@ -4,7 +4,6 @@ import com.malanau.sensorsapi.sensor.domain.SensorCreatedDomainEvent;
 import com.malanau.sensorsapi.sensor.domain.SensorId;
 import com.malanau.sensorsapi.shared.domain.bus.event.DomainEventSubscriber;
 
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,7 +15,6 @@ public final class IncrementSensorCounterOnSensorCreated {
         this.incrementer = incrementer;
     }
 
-    @EventListener
     public void on(final SensorCreatedDomainEvent event) {
         final SensorId sensorId = new SensorId(event.getAggregateId());
 
